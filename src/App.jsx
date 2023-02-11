@@ -1,5 +1,6 @@
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import "./App.css";
 
 function App() {
@@ -27,6 +28,9 @@ function App() {
       )
       .then(
         (response) => {
+          toast.success("Email enviado com sucesso!", {
+            theme: "colored",
+          });
           console.log(
             "EMAIL ENVIADO COM SUCESSO!",
             response.status,
@@ -37,6 +41,9 @@ function App() {
           setMessage("");
         },
         (error) => {
+          toast.error("Erro ao enviar email", {
+            theme: "colored",
+          });
           console.log("ERRO: ", error);
         }
       );
